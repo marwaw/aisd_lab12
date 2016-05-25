@@ -64,7 +64,8 @@ public class Graph {
 		makeSets();
 		Queue<Edge> queue = makeQueue();
 		int suma = 0;
-		for (Edge e: queue){
+		while (!queue.isEmpty()){
+			Edge e = queue.poll();
 			if (find(e.a) != find(e.b)){
 				minimal.add(e);
 				union(e.a, e.b);
@@ -74,6 +75,7 @@ public class Graph {
 		FileWriter fr = new FileWriter(fileName);
 		fr.write("Suma: " + suma);
 		fr.close();
+		System.out.println("Suma: " + suma);
 	}
 	
 	public void link(Element a, Element b){
